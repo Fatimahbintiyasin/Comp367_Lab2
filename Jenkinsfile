@@ -1,10 +1,20 @@
-pipeline {
+pipeline{
     agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn clean install'
+    
+    tools{
+        maven "MAVEN3"
+        jdk "JDK"
+    }
+    stages{
+        stage('Checkout')
+        {
+            steps{
+                git branch: 'main', url: 'https://github.com/Fatimahbintiyasin/Comp367_Lab2.git'
+            }
+        }
+        stage('Maven Build'){
+            steps{
+                bat "mvn clean compile"
             }
         }
     }
