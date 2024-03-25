@@ -8,9 +8,9 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/Fatimahbintiyasin/Comp367_Lab2.git'
             }
         }
-        stage('Maven Build'){
+        stage('Build'){
             steps{
-                bat "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh 'mvn clean install'
             }
         }
     }
